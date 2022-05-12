@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  font-size: 62.5%; /* 10px = 1rem */
+
+  --primary-color: hsl(170, 100%, 26%);
+  --gray-headline: hsl(210, 11%, 15%);
+  --gray-paragraph: hsl(210, 9%, 31%);
+  --background-header: hsl(148, 23%, 89%);
+  --brand-beige: hsl(39, 100%, 97%);
+  --brand-green-light: hsl(148, 23%, 89%);
+  --font-family: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem; /* Resetando o documento inteiro para padrão com 1.6rem = 16px  */
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: auto;
+  height: 7.2rem;
+}
+
+nav img {
+  margin-inline: 2.4rem;
+}
+
+header {
+  width: 37.5rem;
+  margin-inline: auto;
+  margin-top: 4.1rem;
+}
+
+header::before {
+  content: '';
+  width: 100vw;
+  height: 108rem;
+  background-color: var(--background-header);
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h4 {
+  color: var(--primary-color);
+  line-height: 150%;
+  font-size: 1.4rem;
+  margin-top: 4rem;
+}
+
+h1 {
+  color: var(--gray-headline);
+  line-height: 130%;
+  font-size: 3.4rem;
+  margin-top: 1.6rem;
+}
+
+.information {
+  color: var(--gray-paragraph);
+  font-size: 1.8rem;
+  line-height: 150%;
+  margin-top: 2.4rem;
+}
+
+button {
+  background: var(--primary-color);
+
+  border: none;
+  border-radius: 4rem;
+  height: 6.2rem;
+  width: 26.3rem;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  margin-inline: auto;
+  margin-top: 3.2rem;
+  margin-bottom: 6rem;
+}
+
+.female {
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 2rem;
+}
+
+.status {
+  width: 32.7rem;
+  padding-block: 4rem;
+  margin-inline: auto;
+
+  border: 1px solid var(--brand-green-light);
+  border-radius: 0.6rem;
+  background-color: var(--brand-beige);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.stat h3 {
+  color: var(--gray-headline);
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+}
+
+.stat p {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;
+}
