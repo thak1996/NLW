@@ -17,38 +17,28 @@
   --brand-beige: hsl(39, 100%, 97%);
   --brand-green-light: hsl(148, 23%, 89%);
   --font-family: 'DM Sans', sans-serif;
+  --nav-height: 7.2rem;
 }
 
 body {
   font-family: var(--font-family);
-  font-size: 1.6rem; /* Resetando o documento inteiro para padrão com 1.6rem = 16px  */
+  font-size: 1.6rem; /* Resetando o documento inteiro para padrão com 1rem = 10px  */
   text-align: center;
 }
-
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  width: auto;
-  height: 7.2rem;
-}
-
-nav img {
-  margin-inline: 2.4rem;
-}
-
-header {
+/*========================= Tamanhos ======================================= */
+.whapper {
   width: 37.5rem;
   margin-inline: auto;
-  margin-top: 4.1rem;
+}
+/*========================= Header ======================================= */
+header {
+  margin-top: calc(4.1rem + var(--nav-height));
 }
 
 header::before {
   content: '';
-  width: 100vw;
-  height: 108rem;
+  width: 100%;
+  height: calc(108rem + var(--nav-height));
   background-color: var(--background-header);
   display: block;
 
@@ -62,7 +52,6 @@ h4 {
   color: var(--primary-color);
   line-height: 150%;
   font-size: 1.4rem;
-  margin-top: 4rem;
 }
 
 h1 {
@@ -137,4 +126,28 @@ button {
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 150%;
+}
+/*========================= Navegação ======================================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+nav img {
+  margin-inline: 2.4rem;
+}
+
+nav .whapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: var(--nav-height);
+}
+
+nav.scroll {
+  /* background-color: var(--primary-color); */
 }
