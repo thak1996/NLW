@@ -129,6 +129,7 @@ button {
 }
 /*========================= Navegação ======================================= */
 nav {
+  display: flex;
   position: fixed;
   top: 0;
   left: 50%;
@@ -149,5 +150,6 @@ nav .whapper {
 }
 
 nav.scroll {
-  /* background-color: var(--primary-color); */
+  background-color: var(--primary-color);
+  width: 100vw;
 }
