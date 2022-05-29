@@ -182,6 +182,7 @@ nav button {
 body.menu-expanded {
   overflow: hidden;
 }
+
 /* ele faz todos desaparecer, exceto o selecionado */
 body.menu-expanded > :not(nav) {
   display: none;
@@ -191,13 +192,17 @@ body.menu-expanded > :not(nav) {
 .close-menu,
 body.menu-expanded .open-menu {
   opacity: 0;
-  visibility: hidden;
+  visibility: none;
+  /* Display: none; fez sumir o botão do menu inicial que apresentava como um objeto colocando o botão de acesso para o lado  */
+  display: none;
 }
 
 body.menu-expanded .menu,
 body.menu-expanded .close-menu {
   opacity: 1;
   visibility: visible;
+  /* display: inline; fez o objeto .close-menu voltar ao ponto que deveria aparecer, colocando o objeto na posição correta */
+  display: inline;
 }
 
 body.menu-expanded .menu {
