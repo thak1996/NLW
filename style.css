@@ -9,14 +9,24 @@
 
 :root {
   font-size: 62.5%; /* 10px = 1rem */
+
   --primary-color: hsl(170, 100%, 26%);
   --gray-headline: hsl(210, 11%, 15%);
   --gray-paragraph: hsl(210, 9%, 31%);
   --background-header: hsl(148, 23%, 89%);
   --brand-beige: hsl(39, 100%, 97%);
   --brand-green-light: hsl(148, 23%, 89%);
+  --bg-light: hsl(180, 14%, 97%);
+
   --font-family: 'DM Sans', sans-serif;
+
   --nav-height: 7.2rem;
+
+  --transition: all 0.3s ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -30,6 +40,8 @@ body {
   font-size: 1.6rem; /* Resetando o documento inteiro para padrão com 1rem = 10px  */
   text-align: center;
 
+  background-color: var(--bg-light);
+
   overflow: overlay;
 }
 /*========================= Tamanhos ======================================= */
@@ -40,12 +52,65 @@ body {
 ul {
   list-style: none;
 }
-/*========================= Header ======================================= */
-header {
-  margin-top: calc(4.1rem + var(--nav-height));
+
+section {
+  padding-block: 10rem;
 }
 
-header::before {
+/*========================= Navegação ======================================= */
+nav {
+  display: flex;
+
+  height: var(--nav-height);
+
+  position: fixed;
+  top: 0;
+  width: 100vw;
+
+  z-index: 150;
+}
+
+nav img {
+  margin-inline: 2.4rem;
+}
+
+nav .whapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.scroll {
+  background-color: var(--primary-color) !important;
+  transition: var(--transition);
+}
+
+nav.fixed-scroll {
+  background-color: transparent;
+  width: 100vw;
+  transition: var(--transition);
+}
+
+nav.scroll .logo path {
+  fill: white;
+}
+
+nav.scroll button path {
+  stroke: white;
+  transition: all 0.3s ease-out;
+}
+
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/*========================= #Home ======================================= */
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before {
   content: '';
   width: 100%;
   height: calc(108rem + var(--nav-height));
@@ -58,27 +123,27 @@ header::before {
   z-index: -1;
 }
 
-h4 {
+#home h4 {
   color: var(--primary-color);
   line-height: 150%;
   font-size: 1.4rem;
 }
 
-h1 {
+#home h1 {
   color: var(--gray-headline);
   line-height: 130%;
   font-size: 3.4rem;
   margin-top: 1.6rem;
 }
 
-.information {
+#home .information {
   color: var(--gray-paragraph);
   font-size: 1.8rem;
   line-height: 150%;
   margin-top: 2.4rem;
 }
 
-.whatsapp {
+#home .whatsapp {
   background: var(--primary-color);
 
   border: none;
@@ -101,14 +166,14 @@ h1 {
   margin-bottom: 6rem;
 }
 
-.female {
+#home .female {
   width: 26.4rem;
   display: block;
   margin-inline: auto;
   object-position: 0 2rem;
 }
 
-.status {
+#home .status {
   width: 32.7rem;
   padding-block: 4rem;
   margin-inline: auto;
@@ -123,7 +188,7 @@ h1 {
   gap: 6rem;
 }
 
-.stat h3 {
+#home .stat h3 {
   color: var(--gray-headline);
   font-size: 4.8rem;
   font-weight: 700;
@@ -131,51 +196,11 @@ h1 {
   margin-bottom: 0.4rem;
 }
 
-.stat p {
+#home .stat p {
   color: var(--primary-color);
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 150%;
-}
-/*========================= Navegação ======================================= */
-nav {
-  display: flex;
-
-  height: var(--nav-height);
-
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translatex(-50%);
-}
-
-nav img {
-  margin-inline: 2.4rem;
-}
-
-nav .whapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav.scroll {
-  background-color: var(--primary-color);
-  width: 100vw;
-}
-
-nav.scroll svg:nth-child(1) path {
-  fill: white;
-}
-
-nav.scroll button path {
-  stroke: white;
-}
-
-nav button {
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 /*========================= Menu-Expanded ======================================= */
 body.menu-expanded {
@@ -184,7 +209,7 @@ body.menu-expanded {
 
 /* ele faz todos desaparecer, exceto o selecionado */
 body.menu-expanded > :not(nav) {
-  display: none;
+  visibility: hidden;
 }
 
 .menu,
@@ -202,6 +227,7 @@ body.menu-expanded .close-menu {
   visibility: visible;
   /* display: inline; fez o objeto .close-menu voltar ao ponto que deveria aparecer, colocando o objeto na posição correta */
   display: inline;
+  transition: var(--transition);
 }
 
 body.menu-expanded .menu {
@@ -214,10 +240,6 @@ body.menu-expanded .menu {
   height: 100vh;
 
   padding-top: var(--nav-height);
-}
-
-body.menu-expanded nav {
-  position: relative;
 }
 
 .menu ul:nth-child(1) {
@@ -280,4 +302,121 @@ body.menu-expanded .logo path {
 
 body.menu-expanded button path {
   stroke: white;
+}
+/*========================= Services ======================================= */
+#services header h4 {
+  font-size: 1.4rem;
+  line-height: 150%;
+
+  color: var(--primary-color);
+
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  margin-bottom: 1.6rem;
+}
+
+#services header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+
+  color: var(--gray-headline);
+
+  margin-bottom: 6rem;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+div .card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  padding: 2.4rem;
+
+  border: 1px solid var(--brand-green-light);
+  border-radius: 6px;
+
+  background-color: white;
+}
+
+#services .card h3 {
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+  margin-block: 1.6rem;
+}
+
+#services .card .cards {
+  color: ;
+}
+/*========================= About ======================================= */
+#about {
+  background-color: var(--brand-beige);
+}
+#about header h4 {
+  letter-spacing: 0.08rem;
+  line-height: 150%;
+  font-size: 1.4rem;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  margin-bottom: 1.6rem;
+  color: var(--primary-color);
+}
+#about header h2 {
+  color: var(--gray-headline);
+
+  line-height: 3.9rem;
+  font-size: 3rem;
+  font-weight: 700;
+
+  text-align: left;
+
+  margin-bottom: 2.4rem;
+}
+
+#about div p {
+  line-height: 150%;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--gray-paragraph);
+  text-align: left;
+
+  margin-bottom: 6rem;
+}
+
+#about div img {
+  max-width: 100%;
+}
+/*========================= Entre em Contato ======================================= */
+#contact {
+  background-color: var(--brand-beige);
+}
+
+#contact .contact-buttom {
+  background: var(--primary-color);
+
+  border: none;
+  border-radius: 4rem;
+  height: 6.2rem;
+  width: 26.3rem;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  margin-inline: auto;
+  margin-top: 3.2rem;
+  margin-bottom: 6rem;
 }
