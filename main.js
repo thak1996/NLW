@@ -13,20 +13,20 @@ $(window).on('scroll', function () {
   } else {
     $('#navigation').removeClass('scroll')
   }
-})
+});
 
 function openMenu() {
   document.body.classList.add('menu-expanded')
-}
+};
 
 function closeMenu() {
   document.body.classList.remove('menu-expanded')
-}
+};
 
 ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 700
+  duration: 700,
 }).reveal(`#home, 
 #home img, 
 #home .status, 
@@ -34,4 +34,4 @@ ScrollReveal({
 #services header,
 #services .cards,
 #about header,
-#about .content`)
+#about .content`);
