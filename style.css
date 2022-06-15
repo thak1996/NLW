@@ -10,18 +10,23 @@
 :root {
   font-size: 62.5%; /* 10px = 1rem */
 
-  --primary-color: hsl(170, 100%, 26%);
+  --primary-color: hsl(var(--hue), 100%, 26%);
   --gray-headline: hsl(210, 11%, 15%);
   --gray-paragraph: hsl(210, 9%, 31%);
-  --background-header: hsl(148, 23%, 89%);
+
+  --background-header: hsl(calc(var(--hue) - 22), 23%, 89%);
   --brand-beige: hsl(39, 100%, 97%);
   --brand-green-light: hsl(148, 23%, 89%);
+
   --bg-light: hsl(180, 14%, 97%);
+  --brand-dark: hsl(var(--hue), 100%, 14%);
 
-  --font-family: 'DM Sans', sans-serif;
-
+  --hue: 290;
+  
   --nav-height: 7.2rem;
 
+  --font-family: 'DM Sans', sans-serif;
+  
   --transition: all 0.3s ease-out;
 }
 
@@ -49,12 +54,99 @@ body {
   width: 37.5rem;
   margin-inline: auto;
 }
+
 ul {
   list-style: none;
 }
 
 section {
   padding-block: 10rem;
+}
+
+section header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+
+  color: var(--headline);
+}
+
+section header h1 {
+  font-size: 3.4rem;
+  color: var(--headline);
+  line-height: 130%;
+
+  margin-bottom: 2.4rem;
+}
+
+section .content p {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;
+
+  color: var(--paragraph);
+}
+
+#home .button,
+#contact .button {
+  background: var(--primary-color);
+
+  border: none;
+  border-radius: 4rem;
+  height: 6.2rem;
+  width: 26.3rem;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  margin-top: 3.2rem;
+  margin-bottom: 6rem;
+}
+
+#home .button {
+  margin-inline: auto;
+}
+
+#home .button:hover,
+#contact .button:hover {
+  background-color: var(--brand-dark);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+
+/* custom colors */
+#services .card circle {
+  fill: var(--background-header);
+}
+
+#navigation .logo path[fill*='#00856F'],
+#backToTopButton circle {
+  fill: var(--primary-color);
+}
+
+button.open-menu path[stroke*='#00856F'],
+#contact li path {
+  stroke: var(--primary-color);
+}
+
+body.menu-expanded #navigation .logo path,
+#navigation.scroll .logo path {
+  fill: white;
+}
+
+#navigation.scroll button.open-menu path[stroke*='#00856F'] {
+  stroke: white;
 }
 
 /*========================= Navegação ======================================= */
@@ -141,29 +233,6 @@ nav button {
   font-size: 1.8rem;
   line-height: 150%;
   margin-top: 2.4rem;
-}
-
-#home .whatsapp {
-  background: var(--primary-color);
-
-  border: none;
-  border-radius: 4rem;
-  height: 6.2rem;
-  width: 26.3rem;
-
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-
-  margin-inline: auto;
-  margin-top: 3.2rem;
-  margin-bottom: 6rem;
 }
 
 #home .female {
@@ -283,11 +352,11 @@ body.menu-expanded .menu {
   margin-bottom: 8rem;
 }
 
-.social-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3.2rem;
+.menu .button:hover {
+  background-color: var(--primary-color);
+  color: white;
+
+  filter: brightness(1.3);
 }
 
 body.menu-expanded .logo,
@@ -341,12 +410,9 @@ div .card {
   border: 1px solid var(--brand-green-light);
   border-radius: 6px;
 
-  background-color: white;
 }
 
 #services .card h3 {
-  font-size: 2.4rem;
-  line-height: 3.1rem;
   margin-block: 1.6rem;
 }
 
@@ -394,6 +460,23 @@ div .card {
 }
 /*========================= Entre em Contato ======================================= */
 #contact {
-  background-color: var(--brand-beige);
+  text-align: left;
 }
 
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
