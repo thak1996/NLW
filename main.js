@@ -23,6 +23,22 @@ function closeMenu() {
   document.body.classList.remove('menu-expanded')
 };
 
+// function showBackToTopButtonOnScroll() {
+//   if (scrollY > 550) {
+//     backToTopButton.classList.add('show')
+//   } else {
+//     backToTopButton.classList.remove('show')
+//   }
+// };
+
+$(window).on('scroll', function () {
+  if ($(window).scrollTop() > 550) {
+    $('#backToTopButton').addClass('show')
+  } else {
+    $('#backToTopButton').removeClass('show')
+  }
+});
+
 ScrollReveal({
   origin: 'top',
   distance: '30px',
